@@ -15,64 +15,38 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 const portfolios = [
   {
-    title: "Kopi Nusantara",
-    category: "Coffee Shop",
+    title: "Ikhwan Butcher",
+    category: "Butcher Shop",
     description:
-      "Website modern untuk coffee shop dengan menu online dan sistem reservasi meja.",
-    icon: "/logo.png",
+      "Website modern untuk butcher dengan menu online dan cta order via WhatsApp.",
+    icon: "https://jayakarta-production.netlify.app/Butcher.jpg?auto=compress&cs=tinysrgb&w=1260&h=750",
     techStack: ["Next.js", "Tailwind", "Supabase"],
     color: "from-amber-500/20 to-orange-500/20",
     iconBg: "bg-amber-100 text-amber-600",
+    link: "https://ikhwan-butcher.vercel.app",
   },
   {
-    title: "Urban Cuts Barbershop",
-    category: "Barbershop",
+    title: "Jadwal Shalat PDF Maker",
+    category: "web app",
     description:
-      "Landing page elegan dengan fitur booking appointment online 24/7.",
-     icon: "/logo.png",
-    techStack: ["React", "Node.js", "MongoDB"],
+      "Web app untuk membuat jadwal shalat dalam format PDF yang bisa diunduh dan dibagikan.",
+     icon: "https://jadwal-sholat-pdf.netlify.app/Mosque.jpg?auto=compress&cs=tinysrgb&w=1260&h=750",
+    techStack: ["React", "Node.js"],
     color: "from-slate-500/20 to-zinc-500/20",
     iconBg: "bg-slate-100 text-slate-600",
+    link: "https://jadwal-sholat-pdf.netlify.app",
   },
   {
-    title: "Tasik Explore Travel",
-    category: "Travel Agency",
+    title: "Jayakarta Pro",
+    category: "Web Agency",
     description:
-      "Website travel agency dengan katalog paket wisata dan pembayaran online.",
-      icon: "/logo.png",
-    techStack: ["Next.js", "Stripe", "PostgreSQL"],
+      "Website untuk agensi web dengan portofolio, layanan, dan integrasi payment gateway.",
+      icon: "/Jayakarta web.webp",
+    techStack: ["Next.js", "Midtrans", "PostgreSQL"],
     color: "from-sky-500/20 to-blue-500/20",
     iconBg: "bg-sky-100 text-sky-600",
-  },
-  {
-    title: "Trendy Fashion Store",
-    category: "Toko Fashion",
-    description:
-      "E-commerce fashion dengan keranjang belanja dan integrasi WhatsApp.",
-     icon: "/logo.png",
-    techStack: ["Next.js", "Tailwind", "Midtrans"],
-    color: "from-pink-500/20 to-rose-500/20",
-    iconBg: "bg-pink-100 text-pink-600",
-  },
-  {
-    title: "Glow Beauty Clinic",
-    category: "Klinik Kecantikan",
-    description:
-      "Website klinik kecantikan dengan galeri treatment dan booking konsultasi.",
-     icon: "/logo.png",
-    techStack: ["React", "Firebase", "Tailwind"],
-    color: "from-purple-500/20 to-violet-500/20",
-    iconBg: "bg-purple-100 text-purple-600",
-  },
-  {
-    title: "Dapur Sunda Resto",
-    category: "Restoran",
-    description:
-      "Website restoran dengan menu digital, reservasi, dan delivery order.",
-      icon: "/logo.png",
-    techStack: ["Next.js", "Supabase", "Vercel"],
-    color: "from-green-500/20 to-emerald-500/20",
-    iconBg: "bg-green-100 text-green-600",
+    link: "https://jayakarta.vercel.app/",
+
   },
 ];
 
@@ -157,7 +131,8 @@ export function PortfolioSection() {
                   </div>
 
                   <Button
-                    variant="ghost"
+                    onClick={() => window.open(item.link, "_blank")}
+                    variant="outline"
                     className="w-full group/btn hover:bg-primary hover:text-primary-foreground"
                   >
                     Lihat Detail

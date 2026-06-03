@@ -1,69 +1,67 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Check } from "lucide-react"
-import Link from "next/link"
+import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Check } from "lucide-react";
+import Link from "next/link";
 
 const pricingPlans = [
   {
     name: "Starter",
-    price: "1.5",
+    price: "300",
     description: "Cocok untuk bisnis baru yang ingin hadir online",
     features: [
       "1 Halaman Landing Page",
       "Desain responsive",
-      "Integrasi WhatsApp",
-      "Domain .com (1 tahun)",
-      "Hosting (1 tahun)",
+      "Tombol WhatsApp",
+      "Integrasi Google Maps",
       "SSL Certificate",
       "Revisi 2x",
+      "Pengerjaan 2–3 Hari",
     ],
     popular: false,
     cta: "Pilih Starter",
+    satuan: "ribu",
   },
   {
     name: "Business",
-    price: "3.5",
+    price: "650",
     description: "Paling populer untuk UMKM dan bisnis berkembang",
     features: [
-      "5 Halaman Website",
-      "Desain premium custom",
-      "Mobile responsive",
+      "Hingga 5 Halaman Website",
+      "Desain premium",
       "SEO On-Page basic",
       "Integrasi WhatsApp & Maps",
-      "Domain .com (1 tahun)",
-      "Hosting (1 tahun)",
+      "SEO Basic",
       "SSL Certificate",
       "Revisi 5x",
-      "Support 30 hari",
+      "Support 14 Hari",
     ],
     popular: true,
     cta: "Pilih Business",
+    satuan: "ribu",
   },
   {
     name: "Premium",
-    price: "7.5",
+    price: "1",
     description: "Untuk bisnis yang butuh fitur lengkap dan advanced",
     features: [
-      "Unlimited Halaman",
-      "Desain eksklusif",
-      "E-commerce / Booking System",
-      "Dashboard Admin",
-      "SEO On-Page advanced",
-      "Integrasi Payment Gateway",
-      "Domain .com (1 tahun)",
-      "Hosting premium (1 tahun)",
+      "Hingga 10 Halaman Website",
+      "Desain Custom",
+      "Blog / Artikel",
+      "SEO On-Page",
+      "Form Order / Booking",
+      "Optimasi Kecepatan",
       "SSL Certificate",
-      "Revisi unlimited",
-      "Support 90 hari",
+      "Revisi 10x",
       "Maintenance 3 bulan",
     ],
     popular: false,
     cta: "Pilih Premium",
+    satuan: "juta",
   },
-]
+];
 
 export function PricingSection() {
   return (
@@ -87,7 +85,8 @@ export function PricingSection() {
             Pilih Paket Terbaik
           </h2>
           <p className="text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
-            Harga transparan tanpa biaya tersembunyi. Pilih paket sesuai kebutuhan bisnis Anda.
+            Harga transparan tanpa biaya tersembunyi. Pilih paket sesuai
+            kebutuhan bisnis Anda.
           </p>
         </motion.div>
 
@@ -118,10 +117,14 @@ export function PricingSection() {
               >
                 {/* Plan Header */}
                 <div className="mb-6">
-                  <h3 className={`text-xl font-semibold mb-2 ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}>
+                  <h3
+                    className={`text-xl font-semibold mb-2 ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}
+                  >
                     {plan.name}
                   </h3>
-                  <p className={`text-sm ${plan.popular ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+                  <p
+                    className={`text-sm ${plan.popular ? "text-primary-foreground/80" : "text-muted-foreground"}`}
+                  >
                     {plan.description}
                   </p>
                 </div>
@@ -129,14 +132,20 @@ export function PricingSection() {
                 {/* Price */}
                 <div className="mb-6">
                   <div className="flex items-baseline gap-1">
-                    <span className={`text-sm ${plan.popular ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+                    <span
+                      className={`text-sm ${plan.popular ? "text-primary-foreground/80" : "text-muted-foreground"}`}
+                    >
                       Rp
                     </span>
-                    <span className={`text-4xl font-bold ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}>
+                    <span
+                      className={`text-4xl font-bold ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}
+                    >
                       {plan.price}
                     </span>
-                    <span className={`text-sm ${plan.popular ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
-                      juta
+                    <span
+                      className={`text-sm ${plan.popular ? "text-primary-foreground/80" : "text-muted-foreground"}`}
+                    >
+                      {plan.satuan}
                     </span>
                   </div>
                 </div>
@@ -145,12 +154,20 @@ export function PricingSection() {
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, j) => (
                     <li key={j} className="flex items-start gap-3">
-                      <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
-                        plan.popular ? "bg-primary-foreground/20" : "bg-primary/10"
-                      }`}>
-                        <Check className={`w-3 h-3 ${plan.popular ? "text-primary-foreground" : "text-primary"}`} />
+                      <div
+                        className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
+                          plan.popular
+                            ? "bg-primary-foreground/20"
+                            : "bg-primary/10"
+                        }`}
+                      >
+                        <Check
+                          className={`w-3 h-3 ${plan.popular ? "text-primary-foreground" : "text-primary"}`}
+                        />
                       </div>
-                      <span className={`text-sm font-medium ${plan.popular ? "text-primary-foreground/90" : "text-muted-foreground"}`}>
+                      <span
+                        className={`text-sm font-medium ${plan.popular ? "text-primary-foreground/90" : "text-muted-foreground"}`}
+                      >
                         {feature}
                       </span>
                     </li>
@@ -181,9 +198,10 @@ export function PricingSection() {
           viewport={{ once: true }}
           className="text-center text-sm text-muted-foreground mt-8"
         >
-          * Harga bisa disesuaikan dengan kebutuhan. Hubungi kami untuk penawaran khusus.
+          * Harga bisa disesuaikan dengan kebutuhan. Hubungi kami untuk
+          penawaran khusus.
         </motion.p>
       </div>
     </section>
-  )
+  );
 }
