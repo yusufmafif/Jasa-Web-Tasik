@@ -19,7 +19,6 @@ export const metadata: Metadata = {
     "Jasa pembuatan website profesional untuk UMKM, bisnis lokal, restoran, barbershop, travel, dan company profile di Tasikmalaya. Website modern, cepat, dan mobile-friendly.",
   keywords:
     "jasa pembuatan website tasikmalaya, web developer tasik, website umkm, landing page, company profile, toko online",
-  generator: "v0.app",
   icons: {
     icon: [
       {
@@ -41,8 +40,18 @@ export const metadata: Metadata = {
     title: "Jasa Web Tasik | Jasa Pembuatan Website Profesional",
     description:
       "Kami membantu UMKM dan bisnis lokal tampil lebih profesional dengan website cepat, modern, dan mobile-friendly.",
+    url: "https://jasawebtasik.vercel.app",
     type: "website",
     locale: "id_ID",
+    images: [
+      {
+        url: "/Jasawebtasik.webp",
+        width: 1200,
+        height: 630,
+        alt: "Jayakarta Web",
+      },
+    ],
+    siteName: "Jasa Web Tasik",
   },
 };
 
