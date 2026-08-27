@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
-import Link from "next/link";
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import { Check, ArrowUpRight } from "lucide-react"
+import Link from "next/link"
 
 const pricingPlans = [
   {
     name: "Starter",
     price: "300",
+    satuan: "ribu",
     description: "Cocok untuk bisnis baru yang ingin hadir online",
     features: [
       "1 Halaman Landing Page",
@@ -22,11 +22,11 @@ const pricingPlans = [
     ],
     popular: false,
     cta: "Pilih Starter",
-    satuan: "ribu",
   },
   {
     name: "Business",
     price: "650",
+    satuan: "ribu",
     description: "Paling populer untuk UMKM dan bisnis berkembang",
     features: [
       "Hingga 5 Halaman Website",
@@ -40,11 +40,11 @@ const pricingPlans = [
     ],
     popular: true,
     cta: "Pilih Business",
-    satuan: "ribu",
   },
   {
     name: "Premium",
     price: "1",
+    satuan: "juta",
     description: "Untuk bisnis yang butuh fitur lengkap dan advanced",
     features: [
       "Hingga 10 Halaman Website",
@@ -59,114 +59,125 @@ const pricingPlans = [
     ],
     popular: false,
     cta: "Pilih Premium",
-    satuan: "juta",
   },
-];
+]
 
 export function PricingSection() {
   return (
-    <section id="harga" className="py-20 lg:py-32 bg-muted/30 relative">
-      {/* Background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.05)_0%,transparent_50%)]" />
-      </div>
-
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="harga" className="py-24 bg-[#EFF1EC] text-[#14231F]">
+      <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+        {/* Eyebrow */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="flex items-center gap-3 mb-4"
         >
-          <Badge variant="secondary" className="mb-4 px-4 py-1.5 text-sm">
-            Harga
-          </Badge>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 text-balance">
-            Pilih Paket Terbaik
-          </h2>
-          <p className="text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
-            Harga transparan tanpa biaya tersembunyi. Pilih paket sesuai
-            kebutuhan bisnis Anda.
-          </p>
+          <span className="font-mono text-[11px] tracking-wide text-[#5B6B63]">
+            // harga
+          </span>
+          <span className="h-px flex-1 bg-[#CFD6C9]" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+        <motion.h2
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-serif text-3xl sm:text-4xl font-medium tracking-tight mb-4 max-w-xl text-balance"
+        >
+          Pilih paket yang paling cocok.
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.05 }}
+          className="text-base text-[#5B6B63] mb-14 max-w-lg leading-relaxed"
+        >
+          Harga transparan tanpa biaya tersembunyi. Pilih paket sesuai
+          kebutuhan bisnis Anda.
+        </motion.p>
+
+        {/* Pricing cards */}
+        <div className="grid md:grid-cols-3 gap-5">
           {pricingPlans.map((plan, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className={`relative ${plan.popular ? "lg:-mt-4 lg:mb-4" : ""}`}
+              transition={{ delay: i * 0.08 }}
+              className={`relative flex flex-col rounded-xl border transition-all duration-300 ${
+                plan.popular
+                  ? "border-[#14231F] bg-[#14231F] text-[#EFF1EC] shadow-[0_24px_48px_-28px_rgba(20,35,31,0.35)]"
+                  : "border-[#CFD6C9] bg-white/70 hover:border-[#D9A441]/40"
+              }`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                  <Badge className="bg-primary text-primary-foreground px-4 py-1">
-                    Paling Populer
-                  </Badge>
+                <div className="absolute -top-3 left-6">
+                  <span className="font-mono text-[10px] tracking-wide bg-[#D9A441] text-[#14231F] px-3 py-1 rounded-full font-semibold">
+                    populer
+                  </span>
                 </div>
               )}
 
-              <div
-                className={`h-full rounded-3xl p-8 transition-all duration-300 ${
-                  plan.popular
-                    ? "bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-2xl shadow-primary/20"
-                    : "bg-card border border-border hover:border-primary/30 hover:shadow-xl"
-                }`}
-              >
-                {/* Plan Header */}
-                <div className="mb-6">
-                  <h3
-                    className={`text-xl font-semibold mb-2 ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}
-                  >
-                    {plan.name}
-                  </h3>
-                  <p
-                    className={`text-sm ${plan.popular ? "text-primary-foreground/80" : "text-muted-foreground"}`}
-                  >
-                    {plan.description}
-                  </p>
-                </div>
+              <div className="p-6 flex flex-col flex-1">
+                {/* Plan name & desc */}
+                <span className="font-mono text-[11px] text-[#D9A441] mb-2">
+                  {plan.name}
+                </span>
+                <p
+                  className={`text-sm mb-6 leading-relaxed ${
+                    plan.popular ? "text-[#EFF1EC]/70" : "text-[#5B6B63]"
+                  }`}
+                >
+                  {plan.description}
+                </p>
 
                 {/* Price */}
-                <div className="mb-6">
-                  <div className="flex items-baseline gap-1">
-                    <span
-                      className={`text-sm ${plan.popular ? "text-primary-foreground/80" : "text-muted-foreground"}`}
-                    >
-                      Rp
-                    </span>
-                    <span
-                      className={`text-4xl font-bold ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}
-                    >
-                      {plan.price}
-                    </span>
-                    <span
-                      className={`text-sm ${plan.popular ? "text-primary-foreground/80" : "text-muted-foreground"}`}
-                    >
-                      {plan.satuan}
-                    </span>
-                  </div>
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span
+                    className={`text-sm ${
+                      plan.popular ? "text-[#EFF1EC]/60" : "text-[#5B6B63]"
+                    }`}
+                  >
+                    Rp
+                  </span>
+                  <span className="text-3xl font-medium">{plan.price}</span>
+                  <span
+                    className={`text-sm ${
+                      plan.popular ? "text-[#EFF1EC]/60" : "text-[#5B6B63]"
+                    }`}
+                  >
+                    {plan.satuan}
+                  </span>
                 </div>
 
+                {/* Divider */}
+                <div
+                  className={`h-px mb-6 ${
+                    plan.popular ? "bg-[#EFF1EC]/15" : "bg-[#CFD6C9]"
+                  }`}
+                />
+
                 {/* Features */}
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 mb-8 flex-1">
                   {plan.features.map((feature, j) => (
                     <li key={j} className="flex items-start gap-3">
-                      <div
-                        className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
+                      <Check
+                        className={`w-4 h-4 mt-0.5 shrink-0 ${
                           plan.popular
-                            ? "bg-primary-foreground/20"
-                            : "bg-primary/10"
+                            ? "text-[#D9A441]"
+                            : "text-[#14231F]/40"
                         }`}
-                      >
-                        <Check
-                          className={`w-3 h-3 ${plan.popular ? "text-primary-foreground" : "text-primary"}`}
-                        />
-                      </div>
+                      />
                       <span
-                        className={`text-sm font-medium ${plan.popular ? "text-primary-foreground/90" : "text-muted-foreground"}`}
+                        className={`text-sm ${
+                          plan.popular
+                            ? "text-[#EFF1EC]/80"
+                            : "text-[#5B6B63]"
+                        }`}
                       >
                         {feature}
                       </span>
@@ -177,14 +188,15 @@ export function PricingSection() {
                 {/* CTA */}
                 <Button
                   asChild
-                  className={`w-full rounded-full h-12 ${
+                  className={`w-full rounded-lg h-11 font-medium ${
                     plan.popular
-                      ? "bg-primary-foreground text-primary hover:bg-primary-foreground/90"
-                      : "bg-primary text-primary-foreground hover:bg-primary/90"
+                      ? "bg-[#EFF1EC] text-[#14231F] hover:bg-[#EFF1EC]/90"
+                      : "bg-[#14231F] text-[#EFF1EC] hover:bg-[#14231F]/90"
                   }`}
                 >
                   <Link href="https://wa.me/628981299833" target="_blank">
                     {plan.cta}
+                    <ArrowUpRight className="w-4 h-4" />
                   </Link>
                 </Button>
               </div>
@@ -196,12 +208,12 @@ export function PricingSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center text-sm text-muted-foreground mt-8"
+          className="font-mono text-[11px] text-[#5B6B63] text-center mt-8"
         >
           * Harga bisa disesuaikan dengan kebutuhan. Hubungi kami untuk
           penawaran khusus.
         </motion.p>
       </div>
     </section>
-  );
+  )
 }

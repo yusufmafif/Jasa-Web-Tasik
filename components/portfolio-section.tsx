@@ -1,39 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  ExternalLink,
-  Coffee,
-  Scissors,
-  Plane,
-  ShoppingBag,
-  Sparkles,
-  UtensilsCrossed,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { ExternalLink, ArrowRight } from "lucide-react";
 import Image from "next/image";
+
 const portfolios = [
   {
-    title: "Ikhwan Butcher",
-    category: "Butcher Shop",
-    description:
-      "Website modern untuk butcher dengan menu online dan cta order via WhatsApp.",
-    icon: "https://jayakarta-production.netlify.app/Butcher.jpg?auto=compress&cs=tinysrgb&w=1260&h=750",
-    techStack: ["Next.js", "Tailwind", "Supabase"],
-    color: "from-amber-500/20 to-orange-500/20",
-    iconBg: "bg-amber-100 text-amber-600",
-    link: "https://ikhwan-butcher.vercel.app",
-  },
-  {
     title: "Jadwal Shalat PDF Maker",
-    category: "web app",
+    category: "Web App",
     description:
       "Web app untuk membuat jadwal shalat dalam format PDF yang bisa diunduh dan dibagikan.",
-     icon: "https://jadwal-sholat-pdf.netlify.app/Mosque.jpg?auto=compress&cs=tinysrgb&w=1260&h=750",
+    icon: "https://jadwal-sholat-pdf.netlify.app/Mosque.jpg?auto=compress&cs=tinysrgb&w=1260&h=750",
     techStack: ["React", "Node.js"],
-    color: "from-slate-500/20 to-zinc-500/20",
-    iconBg: "bg-slate-100 text-slate-600",
     link: "https://jadwal-sholat-pdf.netlify.app",
   },
   {
@@ -41,103 +19,132 @@ const portfolios = [
     category: "Web Agency",
     description:
       "Website untuk agensi web dengan portofolio, layanan, dan integrasi payment gateway.",
-      icon: "/Jayakarta web.webp",
+    icon: "/Jayakarta web.webp",
     techStack: ["Next.js", "Midtrans", "PostgreSQL"],
-    color: "from-sky-500/20 to-blue-500/20",
-    iconBg: "bg-sky-100 text-sky-600",
     link: "https://jayakarta.vercel.app/",
-
+  },
+  {
+    title: "Nur Athfal Travel",
+    category: "Travel Umrah",
+    description:
+      "Website travel umroh dengan sistem booking paket, konsultasi via WhatsApp, dan admin dashboard untuk mengelola jadwal keberangkatan.",
+    icon: "/nurathfal.webp",
+    techStack: ["Next.js", "Tailwind", "Vercel"],
+    link: "https://nurathfal.vercel.app",
+  },
+  {
+    title: "Ikhwan Butcher",
+    category: "Butcher Shop",
+    description:
+      "Website modern untuk butcher dengan menu online dan CTA order via WhatsApp.",
+    icon: "https://jayakarta-production.netlify.app/Butcher.jpg?auto=compress&cs=tinysrgb&w=1260&h=750",
+    techStack: ["Next.js", "Tailwind", "Supabase"],
+    link: "https://ikhwan-butcher.vercel.app",
   },
 ];
 
+function getDomain(url: string) {
+  try {
+    return new URL(url).hostname;
+  } catch {
+    return url;
+  }
+}
+
 export function PortfolioSection() {
   return (
-    <section id="portfolio" className="py-20 lg:py-32 relative">
-      {/* Background Elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
-      </div>
-
+    <section id="portfolio" className="py-20 lg:py-32 bg-[#EFF1EC] text-[#14231F]">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-4"
         >
-          <Badge variant="secondary" className="mb-4 px-4 py-1.5 text-sm">
-            Portfolio
-          </Badge>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 text-balance">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <span className="h-px w-8 bg-[#CFD6C9]" />
+            <span className="font-mono text-[11px] tracking-wide text-[#5B6B63]">
+              portofolio-terpilih
+            </span>
+            <span className="h-px w-8 bg-[#CFD6C9]" />
+          </div>
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight mb-4 text-balance">
             Project Pilihan
           </h2>
-          <p className="text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
+          <p className="text-lg text-[#5B6B63] max-w-2xl mx-auto leading-relaxed">
             Lihat beberapa project terbaik kami untuk berbagai jenis bisnis
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="flex items-center gap-2 justify-center mb-10 md:hidden">
+          <span className="font-mono text-[11px] text-[#5B6B63]">
+            geser untuk lihat lainnya
+          </span>
+          <ArrowRight className="w-3.5 h-3.5 text-[#D9A441]" />
+        </div>
+
+        <div
+          className={`flex gap-5 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 md:mx-0 md:px-0 md:pb-0 md:gap-6 lg:gap-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden mt-6 md:mt-0`}
+        >
           {portfolios.map((item, i) => (
             <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
+              key={item.title}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="group"
+              transition={{ delay: i * 0.08, duration: 0.4 }}
+              className="shrink-0 w-[82%] sm:w-[55%] md:w-auto snap-center"
             >
-              <div className="bg-card rounded-3xl border border-border overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
-                {/* Thumbnail */}
+              <div className="group h-full flex flex-col rounded-lg border border-[#CFD6C9] bg-white overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[#14231F]/30 hover:shadow-[0_24px_48px_-28px_rgba(20,35,31,0.35)]">
+                {/* browser chrome */}
+                <div className="flex items-center gap-2 px-3 py-2 border-b border-[#CFD6C9] bg-[#EFF1EC]">
+                  <div className="flex gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#14231F]/20" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#14231F]/20" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#14231F]/20" />
+                  </div>
+                  <div className="flex-1 rounded bg-white border border-[#CFD6C9] px-2 py-1 font-mono text-[10px] text-[#5B6B63] truncate">
+                    {getDomain(item.link)}
+                  </div>
+                </div>
 
-                <div
-                  className={`relative h-48 bg-gradient-to-br ${item.color} flex items-center justify-center`}
-                >
+                {/* thumbnail */}
+                <div className="relative h-44 sm:h-48 overflow-hidden bg-[#EFF1EC]">
                   <Image
                     src={item.icon}
                     alt={item.title}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
-
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] opacity-50" />
+                  <div className="absolute inset-0 bg-[#14231F]/0 group-hover:bg-[#14231F]/10 transition-colors duration-300" />
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Badge variant="outline" className="text-xs">
-                      {item.category}
-                    </Badge>
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                {/* content */}
+                <div className="flex flex-col flex-1 p-5">
+                  <span className="font-mono text-[11px] tracking-wide text-[#D9A441] mb-2">
+                    {String(i + 1).padStart(2, "0")} - {item.category}
+                  </span>
+                  <h3 className="font-serif text-lg font-medium mb-1.5">
                     {item.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm font-medium mb-4 line-clamp-2">
+                  <p className="text-sm text-[#5B6B63] leading-relaxed mb-4 line-clamp-2">
                     {item.description}
                   </p>
 
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {item.techStack.map((tech, j) => (
-                      <span
-                        key={j}
-                        className="text-xs px-2 py-1 bg-muted rounded-md text-muted-foreground"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  <div className="font-mono text-[11px] text-[#5B6B63] mb-4">
+                    {item.techStack.join(" / ")}
                   </div>
 
-                  <Button
-                    onClick={() => window.open(item.link, "_blank")}
-                    variant="outline"
-                    className="w-full group/btn hover:bg-primary hover:text-primary-foreground"
+
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/link mt-auto inline-flex items-center gap-1.5 text-sm font-medium pt-3 border-t border-[#CFD6C9]"
                   >
-                    Lihat Detail
-                    <ExternalLink className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Button>
+                    Lihat detail
+                    <ExternalLink className="w-3.5 h-3.5 text-[#5B6B63] group-hover/link:text-[#D9A441] group-hover/link:translate-x-0.5 transition-all duration-300" />
+                  </a>
                 </div>
               </div>
             </motion.div>

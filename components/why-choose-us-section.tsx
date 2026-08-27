@@ -1,14 +1,13 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Badge } from "@/components/ui/badge"
-import { 
-  Palette, 
-  Smartphone, 
-  Zap, 
-  Search, 
-  MessageCircle, 
-  Headphones 
+import {
+  Palette,
+  Smartphone,
+  Zap,
+  Search,
+  MessageCircle,
+  Headphones,
 } from "lucide-react"
 
 const features = [
@@ -46,92 +45,69 @@ const features = [
 
 export function WhyChooseUsSection() {
   return (
-    <section className="py-20 lg:py-32 relative">
-      {/* Background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/4 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
-      </div>
+    <section className="py-24 relative bg-[#EFF1EC] text-[#14231F]">
+      <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+        {/* Eyebrow */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#CFD6C9] bg-white/60 text-[#5B6B63] font-mono text-[11px] tracking-wide">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D9A441]" />
+            keunggulan
+          </span>
+        </motion.div>
 
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Badge variant="secondary" className="mb-4 px-4 py-1.5 text-sm">
-              Keunggulan
-            </Badge>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
-              Mengapa Memilih Kami?
-            </h2>
-            <p className="text-lg text-muted-foreground font-medium mb-8 leading-relaxed">
-              Kami tidak hanya membuat website, tapi membangun fondasi digital untuk kesuksesan bisnis Anda.
-            </p>
+        <motion.h2
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-serif text-3xl sm:text-4xl font-medium tracking-tight mb-4 text-center text-balance"
+        >
+          Mengapa Memilih Kami?
+        </motion.h2>
 
-            {/* Illustration */}
-            <div className="relative">
-              <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl p-8 border border-border">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-card rounded-2xl p-4 border border-border shadow-sm">
-                    <div className="h-2 w-16 bg-primary/30 rounded mb-2" />
-                    <div className="h-2 w-12 bg-muted rounded mb-4" />
-                    <div className="h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg" />
-                  </div>
-                  <div className="bg-card rounded-2xl p-4 border border-border shadow-sm">
-                    <div className="h-2 w-12 bg-accent/30 rounded mb-2" />
-                    <div className="h-2 w-16 bg-muted rounded mb-4" />
-                    <div className="h-16 bg-gradient-to-br from-accent/20 to-primary/20 rounded-lg" />
-                  </div>
-                  <div className="col-span-2 bg-card rounded-2xl p-4 border border-border shadow-sm">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-primary/20" />
-                      <div className="h-2 w-24 bg-muted rounded" />
-                    </div>
-                    <div className="h-3 w-full bg-muted rounded mb-2" />
-                    <div className="h-3 w-3/4 bg-muted/50 rounded" />
-                  </div>
-                </div>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.05 }}
+          className="text-base text-[#5B6B63] mb-14 text-center max-w-lg mx-auto leading-relaxed"
+        >
+          Kami tidak hanya membuat website, tapi membangun fondasi digital
+          untuk kesuksesan bisnis Anda.
+        </motion.p>
+
+        {/* Feature cards grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {features.map((feature, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.07 }}
+              whileHover={{ y: -4 }}
+              className="group relative p-5 rounded-xl border border-[#CFD6C9] bg-white/70 backdrop-blur-sm hover:border-[#D9A441]/40 hover:shadow-[0_12px_32px_-12px_rgba(20,35,31,0.2)] transition-all duration-300"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#14231F] text-[#EFF1EC] group-hover:bg-[#D9A441] transition-colors duration-300 shrink-0">
+                  <feature.icon className="w-4 h-4" />
+                </span>
+                <span className="font-mono text-[10px] text-[#D9A441]">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
               </div>
-            </div>
-          </motion.div>
-
-          {/* Right Content - Features */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="grid gap-4">
-              {features.map((feature, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{ x: 5 }}
-                  className="group"
-                >
-                  <div className="flex items-start gap-4 p-4 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                      <feature.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-                        {feature.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground font-medium">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+              <h3 className="font-medium text-sm mb-1 group-hover:text-[#14231F] transition-colors">
+                {feature.title}
+              </h3>
+              <p className="text-xs text-[#5B6B63] leading-relaxed">
+                {feature.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

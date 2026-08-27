@@ -1,202 +1,148 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  MessageCircle,
-  Monitor,
-  Smartphone,
-  BarChart3,
-} from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
+
+const stats = [
+  { value: "100%", label: "Siap Melayani" },
+  { value: "24/7", label: "Support & Konsultasi" },
+  { value: "UI/UX", label: "Design Modern" },
+];
 
 export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen flex items-center overflow-hidden bg-[#EFF1EC] text-[#14231F] pt-24 pb-16"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0 -z-10">
-        {/* Gradient Blobs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-40 right-20 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse delay-500" />
-
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
-      </div>
-
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-10 items-center">
-          {/* Left Content */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left content */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
             className="text-center lg:text-left"
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold mb-6"
-            >
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Web Developer Tasikmalaya
-            </motion.div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 text-balance">
-              Website Modern untuk{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                Bisnis Anda
+            <div className="flex items-center gap-3 mb-6 justify-center lg:justify-start">
+              <span className="font-mono text-[11px] tracking-wide text-[#5B6B63]">
+                // web-developer-tasikmalaya
               </span>
+              <span className="hidden sm:block h-px w-10 bg-[#CFD6C9]" />
+            </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium leading-[1.1] mb-6 text-balance">
+              Website yang bikin usaha Anda{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10">terlihat serius</span>
+                <span className="absolute left-0 right-0 bottom-1 h-3 bg-[#D9A441]/40 -rotate-1 -z-0" />
+              </span>
+              .
             </h1>
 
-            <p className="text-lg md:text-xl text-muted-foreground font-medium mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Kami membantu UMKM dan bisnis lokal tampil lebih profesional
-              dengan website cepat, modern, dan mobile-friendly.
+            <p className="text-lg text-[#5B6B63] mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+              Kami bantu UMKM dan bisnis lokal tampil lebih profesional lewat
+              website yang cepat, rapi, dan enak dipakai di HP maupun laptop.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-10">
               <Button
                 asChild
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 h-12"
+                className="bg-[#14231F] hover:bg-[#14231F]/90 text-[#EFF1EC] rounded-md px-7 h-12"
               >
                 <Link href="#portfolio">
                   Lihat Portfolio
-                  <ArrowRight className=" w-4 h-4" />
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </Button>
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="rounded-full px-8 h-12 border-border hover:bg-muted"
+                className="rounded-md px-7 h-12 border-[#14231F]/20 text-[#14231F] hover:bg-[#14231F]/5"
               >
                 <Link href="https://wa.me/628981299833" target="_blank">
-                  <MessageCircle className=" w-4 h-4" />
+                  <MessageCircle className="w-4 h-4" />
                   Chat WhatsApp
                 </Link>
               </Button>
             </div>
 
-           
+            <div className="flex items-center justify-center lg:justify-start gap-6 text-center lg:text-left">
+              {stats.map((stat, i) => (
+                <div key={i} className="flex items-center gap-6">
+                  <div>
+                    <div className="font-mono text-lg font-semibold text-[#D9A441]">
+                      {stat.value}
+                    </div>
+                    <div className="text-xs text-[#5B6B63]">{stat.label}</div>
+                  </div>
+                  {i < stats.length - 1 && (
+                    <span className="h-8 w-px bg-[#CFD6C9]" />
+                  )}
+                </div>
+              ))}
+            </div>
           </motion.div>
 
-          {/* Right Content - Hero Illustration */}
+          {/* Right visual — asset.webp with floating wireframe card */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="relative"
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="relative max-w-md mx-auto lg:max-w-none"
           >
             <Image
               src="/asset.webp"
               alt="Jasa Web Tasik"
-              height={1000}
               width={1000}
-              className=" object-contain"
+              height={1000}
+              className="w-full h-auto object-contain"
             />
-            <div className="relative">
-              {/* Main Device Mockup */}
-              <div className="  rounded-3xl shadow-2x  p-4 lg:p-6"></div>
 
-              {/* Floating Elements */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{
-                  duration: 3,
+            {/* floating wireframe card, scaled down */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: [12, 0, -6, 0] }}
+              transition={{
+                opacity: { duration: 0.4, delay: 0.6 },
+                y: {
+                  duration: 5,
                   repeat: Infinity,
                   ease: "easeInOut",
-                }}
-                className="absolute -top-30 lg:-top-50 right-2 lg:-right-5 z-20"
-              >
-                <div className="bg-card rounded-2xl shadow-xl border border-border p-4 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
-                    <BarChart3 className="w-5 h-5 text-green-600" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-muted-foreground">
-                      Visitors
-                    </div>
-                    <div className="text-sm font-semibold text-foreground">
-                      +127%
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.5,
-                }}
-                className="absolute -top-20 left-5 lg:-left-8 z-20"
-              >
-                <div className="bg-card rounded-2xl shadow-xl border border-border p-4 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Monitor className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-muted-foreground">Desktop</div>
-                    <div className="text-sm font-semibold text-foreground">
-                      Responsive
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{
-                  duration: 3.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1,
-                }}
-                className="absolute -top-10 right-1 lg:right-35 z-20 hidden lg:block"
-              >
-                <div className="bg-card rounded-2xl shadow-xl border border-border p-4 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-                    <Smartphone className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-muted-foreground">Mobile</div>
-                    <div className="text-sm font-semibold text-foreground">
-                      Friendly
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-              <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="grid grid-cols-3 mb-4 gap-8 mt-12 pt-4 border-t border-border"
+                  delay: 0.6,
+                },
+              }}
+              className="absolute -bottom-6 left-2 sm:-left-10 w-40 sm:w-48 rounded-lg border border-[#CFD6C9] bg-white shadow-[0_16px_40px_-16px_rgba(20,35,31,0.3)] overflow-hidden z-10"
             >
-              {[
-                { value: "100%", label: "Siap Melayani" },
-                { value: "24/7+", label: "Support & Konsultasi" },
-                { value: "UI/UX", label: "Design Modern" },
-              ].map((stat, i) => (
-                <div key={i} className="text-center lg:text-left">
-                  <div className="text-2xl md:text-3xl font-bold text-foreground">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    {stat.label}
-                  </div>
+              {/* window chrome */}
+              <div className="flex items-center gap-2 px-2.5 py-2 border-b border-[#CFD6C9] bg-[#EFF1EC]">
+                <div className="flex gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#14231F]/20" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#14231F]/20" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#14231F]/20" />
                 </div>
-              ))}
+                <div className="flex-1 rounded bg-white border border-[#CFD6C9] px-1.5 py-0.5 font-mono text-[8px] text-[#5B6B63] truncate">
+                  jasawebtasik.id
+                </div>
+              </div>
+
+              {/* wireframe body */}
+              <div className="p-3 space-y-2">
+                <div className="h-2.5 w-2/3 rounded bg-[#14231F]/80" />
+                <div className="h-1.5 w-1/3 rounded bg-[#14231F]/15" />
+                <div className="h-4 w-1/3 rounded bg-[#D9A441] mt-1" />
+                <div className="grid grid-cols-3 gap-1.5 pt-1">
+                  <div className="h-8 rounded bg-[#14231F]/5 border border-[#CFD6C9]" />
+                  <div className="h-8 rounded bg-[#14231F]/5 border border-[#CFD6C9]" />
+                  <div className="h-8 rounded bg-[#14231F]/5 border border-[#CFD6C9]" />
+                </div>
+              </div>
             </motion.div>
-            </div>
           </motion.div>
         </div>
       </div>
