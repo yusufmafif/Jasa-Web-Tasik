@@ -23,57 +23,63 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer id="kontak" className="bg-foreground text-background pt-20 pb-8">
+    <footer id="kontak" className="bg-[#14231F] text-[#EFF1EC] pt-24 pb-8">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        {/* Top area */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
           {/* Brand */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
+          <div className="lg:col-span-5">
+            <div className="flex items-center gap-3 mb-5">
               <Image
                 src="/logo.png"
                 alt="Jasa Web Tasik"
                 width={40}
                 height={40}
-                className="w-10 h-10 object-contain"
+                className="w-9 h-9 object-contain"
               />
-              <span className="font-semibold text-lg text-background">Jasa Web Tasik</span>
+              <span className="font-serif text-lg font-medium">
+                Jasa Web Tasik
+              </span>
             </div>
-            <p className="text-background/80 font-medium mb-6 leading-relaxed">
-              Jasa pembuatan website profesional untuk UMKM dan bisnis lokal di Tasikmalaya. Website modern, cepat, dan mobile-friendly.
+            <p className="text-sm text-[#EFF1EC]/50 mb-6 leading-relaxed max-w-sm">
+              Jasa pembuatan website profesional untuk UMKM dan bisnis lokal
+              di Tasikmalaya. Website modern, cepat, dan mobile-friendly.
             </p>
             <div className="flex gap-3">
               <Link
                 href="https://wa.me/628981299833"
                 target="_blank"
-                className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
+                className="w-9 h-9 rounded-lg border border-[#EFF1EC]/10 flex items-center justify-center hover:bg-[#D9A441] hover:border-[#D9A441] hover:text-[#14231F] transition-all duration-300"
               >
-                <MessageCircle className="w-5 h-5" />
+                <MessageCircle className="w-4 h-4" />
               </Link>
               <Link
                 href="https://instagram.com/jasawebtasik"
                 target="_blank"
-                className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
+                className="w-9 h-9 rounded-lg border border-[#EFF1EC]/10 flex items-center justify-center hover:bg-[#D9A441] hover:border-[#D9A441] hover:text-[#14231F] transition-all duration-300"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-4 h-4" />
               </Link>
               <Link
                 href="mailto:hello@jasawebtasik.com"
-                className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
+                className="w-9 h-9 rounded-lg border border-[#EFF1EC]/10 flex items-center justify-center hover:bg-[#D9A441] hover:border-[#D9A441] hover:text-[#14231F] transition-all duration-300"
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="w-4 h-4" />
               </Link>
             </div>
           </div>
 
           {/* Navigasi */}
-          <div>
-            <h3 className="font-semibold text-background mb-4">Navigasi</h3>
-            <ul className="space-y-3">
+          <div className="lg:col-span-3">
+            <span className="font-mono text-[10px] tracking-wide text-[#D9A441] mb-4 block">
+              navigasi
+            </span>
+            <ul className="space-y-2.5">
               {footerLinks.navigasi.map((link, i) => (
                 <li key={i}>
                   <Link
                     href={link.href}
-                    className="text-background/80 font-medium hover:text-background transition-colors"
+                    className="text-sm text-[#EFF1EC]/50 hover:text-[#EFF1EC] transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -83,14 +89,16 @@ export function Footer() {
           </div>
 
           {/* Layanan */}
-          <div>
-            <h3 className="font-semibold text-background mb-4">Layanan</h3>
-            <ul className="space-y-3">
+          <div className="lg:col-span-2">
+            <span className="font-mono text-[10px] tracking-wide text-[#D9A441] mb-4 block">
+              layanan
+            </span>
+            <ul className="space-y-2.5">
               {footerLinks.layanan.map((link, i) => (
                 <li key={i}>
                   <Link
                     href={link.href}
-                    className="text-background/80 font-medium hover:text-background transition-colors"
+                    className="text-sm text-[#EFF1EC]/50 hover:text-[#EFF1EC] transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -100,53 +108,45 @@ export function Footer() {
           </div>
 
           {/* Kontak */}
-          <div>
-            <h3 className="font-semibold text-background mb-4">Kontak</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-background/80 font-medium">WhatsApp</p>
-                  <Link
-                    href="https://wa.me/628981299833"
-                    target="_blank"
-                    className="text-background hover:text-primary transition-colors"
-                  >
-                    +62 898-129-9833
-                  </Link>
-                </div>
+          <div className="lg:col-span-2">
+            <span className="font-mono text-[10px] tracking-wide text-[#D9A441] mb-4 block">
+              kontak
+            </span>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  href="https://wa.me/628981299833"
+                  target="_blank"
+                  className="text-sm text-[#EFF1EC]/50 hover:text-[#EFF1EC] transition-colors duration-200"
+                >
+                  WhatsApp
+                </Link>
               </li>
-              <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-background/80 font-medium">Email</p>
-                  <Link
-                    href="mailto:hello@jasawebtasik.com"
-                    className="text-background hover:text-primary transition-colors"
-                  >
-                    hello@jasawebtasik.com
-                  </Link>
-                </div>
+              <li>
+                <Link
+                  href="mailto:hello@jasawebtasik.com"
+                  className="text-sm text-[#EFF1EC]/50 hover:text-[#EFF1EC] transition-colors duration-200"
+                >
+                  Email
+                </Link>
               </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-background/80 font-medium">Lokasi</p>
-                  <p className="text-background">Tasikmalaya, Jawa Barat</p>
-                </div>
+              <li>
+                <span className="text-sm text-[#EFF1EC]/50">
+                  Tasikmalaya
+                </span>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="pt-8 border-t border-background/10">
+        <div className="pt-8 border-t border-[#EFF1EC]/10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-background/60 font-medium">
-              © {new Date().getFullYear()} Jasa Web Tasik. All rights reserved.
+            <p className="font-mono text-[11px] text-[#EFF1EC]/30">
+              © {new Date().getFullYear()} Jasa Web Tasik
             </p>
-            <p className="text-sm text-background/60 font-medium">
-              Made with love in Tasikmalaya
+            <p className="font-mono text-[11px] text-[#EFF1EC]/30">
+              made with care in Tasikmalaya
             </p>
           </div>
         </div>
